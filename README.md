@@ -67,7 +67,7 @@ export class PlayOvalBall implements IBall {
   height = 100;
 }
 ```
-### **Singletone Pattern**
+### **Singleton Pattern**
 In this example only one instance of SportBallFactory class should ever exist.
 ```
 export class SportBallFactory implements IBallFactory {
