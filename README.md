@@ -28,6 +28,63 @@ export enum BallType {
 }  
 ```
 
-Protoype pattern will appear soon
+### **Factory Pattern - PlaytBallFactory & SportBallFactory**
+Factory can be a creator of objects that have a common interface. 
+
+There's `createBall()` method in both: PlaytBallFactory and SportBallFactory that is extended from `IBallFactory` interface.
+To build a "play ball" we just need to instantiate this very factory(PlaytBallFactory) and call it's createBall() method.
+
+```
+export class PlaytBallFactory implements IBallFactory {
+  use: String = "play";
+  createBall(ballType: BallType): IBall {
+    let ball: IBall = null;
+
+    switch (ballType) {
+      case BallType.Round:
+        ball = new PlayRoundBall();
+        break;
+      case BallType.Oval:
+        ball = new PlayOvalBall();
+        break;
+    }
+
+    return ball;
+  }
+}
+```
+
+From the snippet of a code above we can notice that "play balls" can be with diffrent specifications also.
+
+Realizing this using *IBall* interface:
+```
+export class PlayRoundBall implements IBall {
+  width = 200;
+}
+
+export class PlayOvalBall implements IBall {
+  width = 200;
+  height = 100;
+}
+```
+### **Singletone Pattern**
+In this example only one instance of SportBallFactory class should ever exist.
+```
+export class SportBallFactory implements IBallFactory {
+    private constructor() {}
+
+    private static instance: SportBallFactory
+
+    static getInstance(): SportBallFactory {
+      if (!this.instance) {
+        this.instance = new SportBallFactory()
+      }
+
+      return this.instance
+    }
+    ...
+```
+
+- Prototype pattern will appear soon
 
 TBU....
