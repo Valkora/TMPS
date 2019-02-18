@@ -33,7 +33,7 @@ namespace BuilderPattern {
 }
 
 namespace BuilderPattern {
-	export namespace Demo {
+  export namespace DemoBP {
 		export function show() : void {
 			let ball = BallBuilderDirector.construct();
 			console.log(`This ball has following params: \n-Color:  ${ball.colour} \n-Weight: ${ball.weigth}`)
