@@ -84,7 +84,7 @@ namespace AbstractFactoryPattern {
       let ballFactory: IBallFactory;
         
       switch (use) {
-        case "ford":
+        case "sport":
           ballFactory = new SportBallFactory();
           break;
         case "play":
