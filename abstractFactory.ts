@@ -2,12 +2,12 @@
 
 namespace AbstractFactoryPattern {
 
-  export interface IBall{
+  export interface IBall {
     width: Number;
     height?: Number;
   }
 
-  export interface IBallFactory{
+  export interface IBallFactory {
     use: String;
     createBall(ballType: BallType): IBall;
   }
@@ -16,30 +16,38 @@ namespace AbstractFactoryPattern {
     Round = 0,
     Oval = 1
   }
-}
-	
-namespace AbstractFactoryPattern {    
+
   export class SportRoundBall implements IBall {
-      width: Number = 400;
-    }
+    width = 400;
+  }
 
-    export class PlayRoundBall implements IBall {
-      width: Number = 200;
-    }
+  export class PlayRoundBall implements IBall {
+    width = 200;
+  }
 
-    export class SportOvalBall implements IBall {
-      width: Number = 400;
-      height: Number = 200;
-    }
-    
-    export class PlayOvalBall implements IBall {
-      width: Number = 200;
-      height: Number = 100;
-    }
-}
-	
-namespace AbstractFactoryPattern {
+  export class SportOvalBall implements IBall {
+    width = 400;
+    height = 200;
+  }
+
+  export class PlayOvalBall implements IBall {
+    width = 200;
+    height = 100;
+  }
+
   export class SportBallFactory implements IBallFactory {
+    private constructor() {}
+
+    private static instance: SportBallFactory
+
+    static getInstance(): SportBallFactory {
+      if (!this.instance) {
+        this.instance = new SportBallFactory()
+      }
+
+      return this.instance
+    }
+
     use: String = "sport";
     createBall(ballType: BallType): IBall {
       let ball: IBall = null;
@@ -74,34 +82,31 @@ namespace AbstractFactoryPattern {
       return ball;
     }
   }
-}
-
-
-namespace AbstractFactoryPattern {
 
   class BallFactoryProducer {
     static getBallFactory(use: String): IBallFactory {
       let ballFactory: IBallFactory;
-        
+
       switch (use) {
         case "sport":
-          ballFactory = new SportBallFactory();
+          ballFactory = SportBallFactory.getInstance();
           break;
         case "play":
           ballFactory = new PlaytBallFactory();
           break;
-        }
-        return ballFactory;
       }
+
+      return ballFactory;
+    }
   }
 
   export namespace DemoAF {
-    export function show() {   
-      var use = "sport";
-      let ballFactory: IBallFactory = BallFactoryProducer.getBallFactory(use);			
+    export function show() {
+      var use = "play";
+      let ballFactory: IBallFactory = BallFactoryProducer.getBallFactory(use);
 
       let ball: IBall = ballFactory.createBall(BallType.Round);
-      console.log(`Made ball is of ${ballFactory.use} collection and it has following parames: -weight: ${ball.width} ${ball.height ? `-height: ${ball.height}`: ''} .`);
+      console.log(`Made ball is of ${ballFactory.use} collection and it has following parames: -weight: ${ball.width} ${ball.height ? `-height: ${ball.height}` : ''} .`);
     }
   }
 }
