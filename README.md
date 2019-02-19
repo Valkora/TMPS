@@ -3,7 +3,7 @@
 ## Work #1
 
  - Abstract Factory, Factory and Singleton Patterns can be found in 'abstarctFactoy.ts' file
- - 'builder.ts' file containce Builder Pattern
+ - 'builder.ts' file containce Builder and Prototype Patterns
 
 ### **Abstract Factory Pattern - IBallFactory**
 
