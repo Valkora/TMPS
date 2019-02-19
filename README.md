@@ -134,6 +134,16 @@ export class BallBuilderDirector {
 ```
 
 ### Prototype Pattern
-- Prototype pattern will appear soon
+```
+export class BallPrototype {
+  constructor(private proto: any){};
+  clone() {
+    let ball = new Ball();
 
-TBU....
+    ball.weigth = this.proto.weight;
+    ball.colour = this.proto.colour;
+
+    return ball;
+  };
+}
+```
