@@ -30,11 +30,30 @@ namespace BuilderPattern {
       return this._ball;
     }
   }
+  export class BallPrototype {
+    constructor(private proto: any){};
+    clone() {
+      let ball = new Ball();
+  
+      ball.weigth = this.proto.weight;
+      ball.colour = this.proto.colour;
+  
+      return ball;
+    };
+  }
 }
 
 namespace BuilderPattern {
   export namespace DemoBP {
 		export function show() : void {
+      let proto = new Ball();
+      proto.weigth = 4000;
+      proto.colour = 'red';
+      let prototype = new BallPrototype(proto);
+      let protoBall = prototype.clone();
+
+      console.log(`Cloned ball has following params: \n-Color:  ${protoBall.colour} \n-Weight: ${protoBall.weigth}`)
+
 			let ball = BallBuilderDirector.construct();
 			console.log(`This ball has following params: \n-Color:  ${ball.colour} \n-Weight: ${ball.weigth}`)
 		}
