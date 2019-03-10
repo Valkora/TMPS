@@ -147,3 +147,8 @@ export class BallPrototype {
   };
 }
 ```
+
+## Work #2
+
+- Composite and Adapter Patterns are in composite.ts file in "Structural & Behavioral Patterns" folder
+TBU
