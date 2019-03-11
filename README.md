@@ -152,3 +152,93 @@ export class BallPrototype {
 
 - Composite and Adapter Patterns are in composite.ts file in "Structural & Behavioral Patterns" folder
 TBU
+- Decorator Pattern is in decorator.ts filre
+- Strategy Pattern is in strategy.ts
+
+### **Composite Pattern**
+
+###### IBallObject - The component interface declares common operations for simple and complex objects of a composition.
+```
+interface IBallObject {
+  name: String;
+  height: Number;
+  width?:Number;
+  operate(): void;
+  getParams(): void;
+}
+```
+
+###### Class Group - The composite class represents complex components that have children. Composite objects delegate the actual work to their children and then "sum up" the result.
+
+```
+class Group implements IBallObject {
+  name: String;
+  height: Number;
+  width?: Number;
+  private _balls: IBallObject[];
+
+  constructor(name: String) {
+    this.name = name;
+    this._balls = [];
+  }
+
+  operate(): void {
+    console.log(`Group: ${this.name} is on sale`)
+    this._balls.map((ball: IBallObject) => {
+      ball.operate();
+    });
+  }
+
+  getParams(): void {...} 
+
+  addBall(newBall: IBallObject) {...}
+
+  ballGone(lostBall: IBallObject) {...}
+}
+```
+
+A composite object can add or remove other components (both simple or complex) to or from its child list.
+```
+addBall(newBall: IBallObject) {...} // Add a child to the array of children.
+ballGone(lostBall: IBallObject) {...} // Remove a child from the array of children.
+```
+
+###### Class Ball represents end objects of a composition. It's a leaf objects that do the actual work.
+
+```
+class Ball implements IBallObject {
+  name: String;
+  height: Number;
+  width?: Number;
+
+  constructor(name: String, height: Number, width?: Number) {
+    this.name = name;
+    this.height = height;
+    if (width) {
+      this.width = width;
+    }
+  }
+
+  operate() {
+    console.log(`Ball: ${this.name} ball is on sale`);
+  }
+
+  getParams() {
+    console.log(`Ball: ${this.name} has following params: \n${this.height} ${ this.width ? `width ${this.width}` : ''}`)
+  }
+}
+```
+
+The client code works with all the components via base interface.
+
+```
+  const group = new Group('Round Group 16');
+  const specialGroup = new Group('Oval Group 23');
+
+  const ballTennis = new Ball('Tennis', 10);
+  const ballFootball = new Ball('Football', 15);
+  const ballBocce = new Ball('Bocce', 7);
+  group.addBall(ballTennis);
+  group.addBall(ballFootball);
+  group.addBall(ballBocce);
+```
