@@ -1,15 +1,16 @@
 # TMPS| <a href="https://github.com/Valkora/TMPS/blob/master/README.md#work-1"> Work#1 </a> & <a href="https://github.com/Valkora/TMPS/blob/master/README.md#work-2"> Work#2 </a>
 
 ### Work1
-   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#abstract-factory-pattern---iballfactory"> Abstract Factory Pattern </a>
-   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#factory-pattern---playtballfactory--sportballfactory"> Factory Pattern </a>
-   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#singleton-pattern"> Singleton Pattern </a>
-   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#builder-pattern---ballbuilder"> Builder Pattern </a>
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#abstract-factory-pattern---iballfactory"> Abstract Factory Pattern </a> | 
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#factory-pattern---playtballfactory--sportballfactory"> Factory Pattern </a> | 
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#singleton-pattern"> Singleton Pattern </a> |
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#builder-pattern---ballbuilder"> Builder Pattern </a> |
    <a href="https://github.com/Valkora/TMPS/blob/master/README.md#prototype-pattern"> Prototype Pattern </a> 
 
 ### Work2
-   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#composite-pattern"> Composite Pattern </a>
-   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#adapter-pattern"> Adapter Pattern </a>
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#composite-pattern"> Composite Pattern </a> | 
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#adapter-pattern"> Adapter Pattern </a> | 
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#decorator-pattern"> Decorator Pattern </a>
 
 ## Work #1
 
