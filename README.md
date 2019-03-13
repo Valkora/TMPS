@@ -242,3 +242,62 @@ The client code works with all the components via base interface.
   group.addBall(ballFootball);
   group.addBall(ballBocce);
 ```
+
+### **Adapter Pattern**
+There's a class Ball with IBallObject interface. Using this class round(height property) and oval(height and width) balls can be created. This class has 'getParams' method and it tells ball's params(name, heigth and width if ball has it).
+```
+class Ball implements IBallObject {
+  name: String;
+  height: Number;
+  width?: Number;
+
+  constructor(name: String, height: Number, width?: Number) {
+    this.name = name;
+    this.height = height;
+    if (width) {
+      this.width = width;
+    }
+  }
+
+  operate() {...}
+
+  getParams() {
+    console.log(`Ball: ${this.name} has following params: \n${this.height} ${ this.width ? `width ${this.width}` : ''}`)
+  }
+}
+```
+However, "client" always wants to get all params(name, height and width). Adapter class resovles this "issue" and improve getParams() for round balls.
+```
+class Adapter extends Ball {
+  private ball: Ball;
+
+  public getParams() {
+    console.log(`Ball: ${this.ball.name} has following params: \n${this.ball.height} width ${this.ball.height}`)
+  }
+}
+```
+In client code it looks following way:
+```
+(function main() {
+  const group = new Group('Round Group 16');
+  const specialGroup = new Group('Oval Group 23');
+
+  const ballTennis = new Ball('Tennis', 10);
+
+
+  const specialBallRugby = new Ball('Rugby', 22, 12);
+
+  group.ballGone(ballFootball);
+  console.log('Client: What are the params of Rugby ball?')
+  specialBallRugby.getParams();
+  console.log('Client: And what are the params of Tennis ball?')
+  ballTennis.getParams();
+  console.log('Client: Ohh, I don\'t get it ...')
+
+  const adaptTennis = new Adapter(ballTennis.name, ballTennis.height);
+  adaptTennis.getParams();
+
+  console.log('Clinet: Thank you! Now I see it.')
+
+})();
+```
