@@ -7,6 +7,10 @@
    <a href="https://github.com/Valkora/TMPS/blob/master/README.md#builder-pattern---ballbuilder"> Builder Pattern </a>
    <a href="https://github.com/Valkora/TMPS/blob/master/README.md#prototype-pattern"> Prototype Pattern </a> 
 
+### Work2
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#composite-pattern"> Composite Pattern </a>
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#adapter-pattern"> Adapter Pattern </a>
+
 ## Work #1
 
  - Abstract Factory, Factory and Singleton Patterns can be found in 'abstarctFactoy.ts' file
