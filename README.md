@@ -1,4 +1,4 @@
-# TMPS
+# TMPS| <a href="https://github.com/Valkora/TMPS/blob/master/README.md#work-1"> Work#1 </a> & <a href="https://github.com/Valkora/TMPS/blob/master/README.md#work-2"> Work#2 </a>
 
 ## Work #1
 
