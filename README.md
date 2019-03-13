@@ -240,7 +240,7 @@ class Ball implements IBallObject {
 }
 ```
 
-The client code works with all the components via base interface.
+###### The client code works with all the components via base interface.
 
 ```
   const group = new Group('Round Group 16');
@@ -255,7 +255,7 @@ The client code works with all the components via base interface.
 ```
 
 ### **Adapter Pattern**
-There's a class Ball with IBallObject interface. Using this class round(height property) and oval(height and width) balls can be created. This class has 'getParams' method and it tells ball's params(name, heigth and width if ball has it).
+###### There's a class Ball with IBallObject interface. Using this class round(height property) and oval(height and width) balls can be created. This class has 'getParams' method and it tells ball's params(name, heigth and width if ball has it).
 ```
 class Ball implements IBallObject {
   name: String;
@@ -277,7 +277,7 @@ class Ball implements IBallObject {
   }
 }
 ```
-However, "client" always wants to get all params(name, height and width). Adapter class resovles this "issue" and improve getParams() for round balls.
+###### However, "client" always wants to get all params(name, height and width). Adapter class resovles this "issue" and improve getParams() for round balls.
 ```
 class Adapter extends Ball {
   private ball: Ball;
@@ -287,7 +287,7 @@ class Adapter extends Ball {
   }
 }
 ```
-In client code it looks following way:
+###### In client code it looks following way:
 ```
 (function main() {
   const group = new Group('Round Group 16');
@@ -310,5 +310,69 @@ In client code it looks following way:
 
   console.log('Clinet: Thank you! Now I see it.')
 
+})();
+```
+
+### **Decorator Pattern**
+###### The base Component interface defines operations that can be altered by decorators.
+```
+interface IBall {
+  cost(): Number;
+}
+```
+
+###### GeneralBall provide default implementations of the operations.
+```
+class GeneralBall implements IBall {
+  cost(): Number {
+    return 10;
+  }
+}
+```
+
+###### The BallExtraDecorator(base Decorator) class follows the same interface as the other components. The primary purpose of this class is to define the wrapping interface for all concrete decorators. 
+```
+class BallExtraDecorator implements IBall {
+  private _ball: IBall;
+
+  constructor(ball: GeneralBall) {
+    this._ball = ball;
+  }
+  // The Decorator delegates all work to the wrapped component. 
+  cost(): Number {
+    return this._ball.cost();
+  }
+}
+```
+
+###### StripeDecorators calls the wrapped object and alter its result.
+```
+class StripeDecorator extends BallExtraDecorator {
+  private _price: Number = 3;
+
+  cost(): Number {
+    return super.cost().valueOf() + this._price.valueOf();
+  }
+}
+```
+###### SportDecorator
+```
+class SportDecorator extends BallExtraDecorator {
+  private _price: Number = 2.5;
+  private _sportEdition: Number = 1.5;
+
+  cost(): Number {
+    return super.cost().valueOf() + this._price.valueOf() + this._sportEdition.valueOf();
+  }
+}
+```
+
+###### Client code works with all objects using the Component interface. 
+```
+(function main() {
+  const general = new GeneralBall();
+  const withStripes = new StripeDecorator(general);
+  const sportEdition = new SportDecorator(withStripes);
+  console.log(`Total: ${sportEdition.cost()}`);
 })();
 ```
