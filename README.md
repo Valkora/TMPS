@@ -164,7 +164,7 @@ export class BallPrototype {
 
 - Composite and Adapter Patterns are in composite.ts file in "Structural & Behavioral Patterns" folder
 TBU
-- Decorator Pattern is in decorator.ts filre
+- Decorator and Facade Patterns are in decorator.ts file
 - Strategy Pattern is in strategy.ts
 
 ### **Composite Pattern**
@@ -368,7 +368,7 @@ class SportDecorator extends BallExtraDecorator {
 }
 ```
 
-###### Client code works with all objects using the Component interface. 
+###### Client code can work with all objects using the Component interface. 
 ```
 (function main() {
   const general = new GeneralBall();
@@ -377,3 +377,75 @@ class SportDecorator extends BallExtraDecorator {
   console.log(`Total: ${sportEdition.cost()}`);
 })();
 ```
+### **Facade Pattern**
+###### The BallProductionProcess class provides a simple interface to the complex logic of one or several subsystems.
+It keeps client away from complexity of the subsystem.
+ ```
+ class BallProductionProcess {
+
+  private _matPrep: RawMaterialPrepareSystem;
+  private _decorSect: DecorationSection;
+  private _PackingDepart: PackingDepartment;
+
+  constructor() {
+    this._matPrep = new RawMaterialPrepareSystem();
+    this._decorSect = new DecorationSection();
+    this._PackingDepart = new PackingDepartment();
+  }
+
+  processStart(type: string, ball: GeneralBall) {
+    this._matPrep.prepare();
+    this._decorSect.decorate(type, ball);
+    this._PackingDepart.pack();
+
+  }
+}
+ ```
+ 
+ ###### The Subsystems: `RawMaterialPrepareSystem`, `DecorationSection` and `PackingDepartment` can accept requests either from the facade(BallProductionProcess) or client directly.The Facade is just another client of Subsystems, and it's not a part of the Subsystems.
+ ```
+ class RawMaterialPrepareSystem {
+  prepare() {
+    console.log('Prepare raw material for standart ball');
+  }
+}
+ ```
+ ###### The DecorationSection subsystem combines Facade and Decorator Patterns. During decorate event ball can be decorated by diffrent decorators.
+ ```
+ class DecorationSection {
+  decorate(type, ball) {
+    switch (type) {
+      case 'sport':
+        const withStripes = new StripeDecorator(ball);
+        console.log(`Total: ${withStripes.cost()}`);
+        break;
+      case 'stripe':
+        const sportEdition = new SportDecorator(ball);
+        console.log(`Total: ${sportEdition.cost()}`);
+        break;
+    }
+    console.log('Add stripes to a ball');
+  }
+}
+ ```
+ ```
+ class PackingDepartment {
+  pack() {
+    console.log('Pack a ball');
+  }
+}
+ ```
+ 
+###### In client code  works with complex subsystems through a simple interface provided by the Facade.
+```
+(function main() {
+  const general = new GeneralBall();
+  const process = new BallProductionProcess();
+  process.processStart('stripe', general);
+})();
+```
+
+
+....
+Strategy
+TBU...
