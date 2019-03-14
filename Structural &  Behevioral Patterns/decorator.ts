@@ -37,9 +37,56 @@ class SportDecorator extends BallExtraDecorator {
   }
 }
 
+class RawMaterialPrepareSystem {
+  prepare() {
+    console.log('Prepare raw material for standart ball');
+  }
+}
+
+class DecorationSection {
+  decorate(type, ball) {
+    switch (type) {
+      case 'sport':
+        const withStripes = new StripeDecorator(ball);
+        console.log(`Total: ${withStripes.cost()}`);
+        break;
+      case 'stripe':
+        const sportEdition = new SportDecorator(ball);
+        console.log(`Total: ${sportEdition.cost()}`);
+        break;
+    }
+    console.log('Add stripes to a ball');
+  }
+}
+
+class PackingDepartment {
+  pack() {
+    console.log('Pack a ball');
+  }
+}
+
+class BallProductionProcess {
+
+  private _matPrep: RawMaterialPrepareSystem;
+  private _decorSect: DecorationSection;
+  private _PackingDepart: PackingDepartment;
+
+  constructor() {
+    this._matPrep = new RawMaterialPrepareSystem();
+    this._decorSect = new DecorationSection();
+    this._PackingDepart = new PackingDepartment();
+  }
+
+  processStart(type: string, ball: GeneralBall) {
+    this._matPrep.prepare();
+    this._decorSect.decorate(type, ball);
+    this._PackingDepart.pack();
+
+  }
+}
+
 (function main() {
   const general = new GeneralBall();
-  const withStripes = new StripeDecorator(general);
-  const sportEdition = new SportDecorator(withStripes);
-  console.log(`Total: ${sportEdition.cost()}`);
+  const process = new BallProductionProcess();
+  process.processStart('stripe', general);
 })();
