@@ -10,7 +10,8 @@
 ### Work2
    <a href="https://github.com/Valkora/TMPS/blob/master/README.md#composite-pattern"> Composite Pattern </a> | 
    <a href="https://github.com/Valkora/TMPS/blob/master/README.md#adapter-pattern"> Adapter Pattern </a> | 
-   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#decorator-pattern"> Decorator Pattern </a>
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#decorator-pattern"> Decorator Pattern </a> | 
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#facade-pattern"> Facade Pattern </a>
 
 ## Work #1
 
