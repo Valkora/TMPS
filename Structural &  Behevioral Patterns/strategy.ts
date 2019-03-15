@@ -1,41 +1,41 @@
-interface WorkoutStrategy {
-  fire(): void;
+interface ProductionStrategy {
+  produce(): void;
   stop?(): void;
 }
 
-class Running implements WorkoutStrategy {
-  public fire(): void {
-    console.log('Running')
+class Sewing implements ProductionStrategy {
+  public produce(): void {
+    console.log('Sewing')
   }
 }
 
-class Basketball implements WorkoutStrategy {
-  public fire(): void {
-    console.log('Basketball')
+class Melting implements ProductionStrategy {
+  public produce(): void {
+    console.log('Melting')
   }
 }
 
-class Swimming implements WorkoutStrategy {
-  public fire(): void {
-    console.log('Swimming')
+class Pressing implements ProductionStrategy {
+  public produce(): void {
+    console.log('Pressing')
   }
 }
 
-class Person {
-  public strategy: WorkoutStrategy;
+class BallProduction {
+  public strategy: ProductionStrategy;
   public name: String;
-  constructor(name: string, strategy: WorkoutStrategy) {
+  constructor(name: string, strategy: ProductionStrategy) {
     this.name = name;
     this.strategy = strategy
   }
 
-  workout(): void {
+  producing(): void {
     console.log(`${ this.name } starts:`)
-    this.strategy.fire();
+    this.strategy.produce();
   };
 }
 
 (function main() {
-  const amanda = new Person('Amanda', new Running())
-  amanda.workout()
+  const football = new BallProduction('Football', new Sewing())
+  football.producing()
 })();
