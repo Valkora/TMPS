@@ -446,7 +446,57 @@ It keeps client away from complexity of the subsystem.
 })();
 ```
 
+### **Strategy Pattern**
 
-....
-Strategy
-TBU...
+###### The BallProduction defines the interface of interest to `clients`.
+```
+class BallProduction {
+  public strategy: ProductionStrategy;
+  public name: String;
+  constructor(name: string, strategy: ProductionStrategy) {
+    this.name = name;
+    this.strategy = strategy
+  }
+
+  producing(): void {
+    console.log(`${ this.name } starts:`)
+    this.strategy.produce();
+  };
+}
+```
+
+###### The ProductionStrategy interface declares operations common to all supported versions of some ball productions strategies.
+```
+interface ProductionStrategy {
+  produce(): void;
+  stop?(): void;
+}
+```
+
+###### Concrete strategies (Sewing/Melting/Pressing) implement the actions while following the base ProductionStrategy interface.
+```
+class Sewing implements ProductionStrategy {
+  public produce(): void {
+    console.log('Sewing')
+  }
+}
+
+class Melting implements ProductionStrategy {
+  public produce(): void {
+    console.log('Melting')
+  }
+}
+
+class Pressing implements ProductionStrategy {
+  public produce(): void {
+    console.log('Pressing')
+  }
+}
+```
+###### The client code picks a concrete strategy and passes it to the BallProduction.
+```
+(function main() {
+  const football = new BallProduction('Football', new Sewing())
+  football.producing()
+})();
+```
