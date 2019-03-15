@@ -11,7 +11,8 @@
    <a href="https://github.com/Valkora/TMPS/blob/master/README.md#composite-pattern"> Composite Pattern </a> | 
    <a href="https://github.com/Valkora/TMPS/blob/master/README.md#adapter-pattern"> Adapter Pattern </a> | 
    <a href="https://github.com/Valkora/TMPS/blob/master/README.md#decorator-pattern"> Decorator Pattern </a> | 
-   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#facade-pattern"> Facade Pattern </a>
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#facade-pattern"> Facade Pattern </a> |
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#strategy-pattern"> Strategy Pattern </a>
 
 ## Work #1
 
@@ -162,6 +163,11 @@ export class BallPrototype {
 ```
 
 ## Work #2
+ <a href="https://github.com/Valkora/TMPS/blob/master/README.md#composite-pattern"> Composite Pattern </a> | 
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#adapter-pattern"> Adapter Pattern </a> | 
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#decorator-pattern"> Decorator Pattern </a> | 
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#facade-pattern"> Facade Pattern </a> |
+   <a href="https://github.com/Valkora/TMPS/blob/master/README.md#strategy-pattern"> Strategy Pattern </a>
 
 - Composite and Adapter Patterns are in composite.ts file in "Structural & Behavioral Patterns" folder
 TBU
