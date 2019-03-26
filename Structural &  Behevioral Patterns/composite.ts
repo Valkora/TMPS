@@ -81,7 +81,7 @@ class Ball implements IBallObject {
 }
 
 class Adapter extends Ball {
-  private ball: Ball;
+  constructor(private ball: Ball) {}
 
   public getParams() {
     console.log(`Ball: ${this.ball.name} has following params: \n${this.ball.height} width ${this.ball.height}`)
@@ -113,7 +113,7 @@ class Adapter extends Ball {
   ballTennis.getParams();
   console.log('Client: Ohh, I don\'t get it ...')
 
-  const adaptTennis = new Adapter(ballTennis.name, ballTennis.height);
+  const adaptTennis = new Adapter(ballTennis);
   adaptTennis.getParams();
 
   console.log('Clinet: Thank you! Now I see it.')
