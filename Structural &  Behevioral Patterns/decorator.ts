@@ -46,11 +46,11 @@ class RawMaterialPrepareSystem {
 class DecorationSection {
   decorate(type, ball) {
     switch (type) {
-      case 'sport':
+      case 'stripe':
         const withStripes = new StripeDecorator(ball);
         console.log(`Total: ${withStripes.cost()}`);
         break;
-      case 'stripe':
+      case 'sport':
         const sportEdition = new SportDecorator(ball);
         console.log(`Total: ${sportEdition.cost()}`);
         break;
